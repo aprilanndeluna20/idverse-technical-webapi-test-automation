@@ -48,15 +48,11 @@ export default defineConfig({
       testDir: './tests/web-CheapFlights',
       use: {
         // Automatically grabs the UI_URL from your .env file
+        ...devices['Desktop Chrome'],
         baseURL: process.env.WEB_URL,
         screenshot: 'only-on-failure',
       },
     },
-
-    // {
-    //   name: 'chromium',
-    //   use: { ...devices['Desktop Chrome'] },
-    // },
 
     // {
     //   name: 'firefox',

@@ -1,8 +1,6 @@
 import { test, expect } from '@playwright/test';
-import createBooking from '../utils/TestData/api-test-data.json';
 
 test.describe('CREATE Booking', () => {
-  const apiURL = process.env.API_URL;
 
   test('should create a booking from a valid id', async ({ request }) => {
     const response = await request.post('https://restful-booker.herokuapp.com/booking', {
@@ -23,7 +21,6 @@ test.describe('CREATE Booking', () => {
     });
     expect(response.status()).toBe(500);
     
-    // const body = await response.json();
-    // expect(body).toHaveProperty('page', 2);
+
   });
 });

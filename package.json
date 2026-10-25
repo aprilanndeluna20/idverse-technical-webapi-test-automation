@@ -4,7 +4,7 @@
   "description": "repository for the creation of web test automation of Cheap Flights and api test automation for Restful Booker as a technical assessment.",
   "main": "index.js",
   "scripts": {
-    "test:ui": "npx playwright test --project=web-tests",
+    "test:web": "npx playwright test --project=web-tests",
     "test:api": "npx playwright test --project=api-tests"
   },
   "repository": {
