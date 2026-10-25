@@ -1,3 +1,20 @@
 {
+ "locations": {
+    "SK": "Seoul, South Korea",
+    "TP": "Taipei City, Taiwan",
+    "LA": "Los Angeles, California",
+    "JP": "Tokyo, Japan",
+    "HN": "Hanoi, Vietnam",
+    "SD": "Sydney, Australia",
+    "HK": "Hong Kong, Hong Kong",
+    "MC": "Macau, Macau",
 
+    "CB": "Cebu City, Cebu, Philippines",
+    "MNL": "Manila, Philippines",
+    "PL": "El Nido, Palawan, Philippines",
+    "BR": "Boracay, Philippines"
+
+
+
+ }
 }
