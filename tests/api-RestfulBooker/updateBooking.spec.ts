@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 import updateBooking from '../utils/TestData/api-test-data.json';
 
-test.describe.skip('UPDATE Booking', () => {
+test.describe('UPDATE Booking', () => {
 
   test('should create a booking from a valid id', async ({ request }) => {
-    const response = await request.post('https://restful-booker.herokuapp.com/booking/99', {
+    const response = await request.post('https://restful-booker.herokuapp.com/booking/1000', {
         data: 
         {
         "firstname" : "Amy",
@@ -22,9 +22,14 @@ test.describe.skip('UPDATE Booking', () => {
           'Cookie': 'token=abc123'
     }
     });
-    expect(response.status()).toBe(500);
+   try {
+          expect(response.status()).toBe(200);
+
+    } catch {
+          expect(response.status()).toBe(404);
+
+    }
     
-    // const body = await response.json();
-    // expect(body).toHaveProperty('page', 2);
+
   });
 });

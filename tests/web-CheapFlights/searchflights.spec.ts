@@ -8,7 +8,7 @@ test.beforeEach(async ({page}) =>{
     search = new searchFlights(page);
 });
 
-test.describe.only('Search Flights', () => {
+test.describe('Search Flights', () => {
 
     test('should search flight default From location to Taipei in an economy as return flight ', async ({page}) => {
         if(await search.toLocation.isVisible()){

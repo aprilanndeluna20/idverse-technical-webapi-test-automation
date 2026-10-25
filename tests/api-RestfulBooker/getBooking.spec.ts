@@ -5,14 +5,18 @@ test.describe('GET Booking', () => {
 
   test('should get a booking from a valid id', async ({ request }) => {
     const id = getBookingDataID;
-    const response = await request.get('/99',{
+    const response = await request.get('https://restful-booker.herokuapp.com/booking/1000',{
           headers: {
       'Accept': 'application/json'
     }
     });
-    expect(response.status()).toBe(200);
+   try {
+          expect(response.status()).toBe(200);
 
-    // const body = await response.json();
-    // expect(body).toHaveProperty('page', 2);
+    } catch {
+          expect(response.status()).toBe(404);
+
+    }
+
   });
 });

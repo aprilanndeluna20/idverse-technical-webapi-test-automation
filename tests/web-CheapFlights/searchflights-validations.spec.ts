@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test';
-import { mainPage } from '../utils/Pages/main';
+import { locations } from '../utils/TestData/web-test-data.json';
 import { searchFlights } from '../utils/Pages/searchflights';
 
 let search: searchFlights;
@@ -38,14 +38,37 @@ test.describe('Other functionalities', () => {
         await expect(search.addInfant).toBeDisabled();
     });
 
-    test('should maximize the traveller children count to 7 and with age 1 -17 ', async ({}) => {
-    });
-
-    test('multicity - resetting the form ', async ({}) => {
-        
-    });
 
     test('multicity - clearall ', async ({}) => {
+         await search.returnTripType.click();
+        await search.multiCityTripType.click();
+        await search.to1.fill(locations.HN);
+        await search.getLocation(locations.HN);
+        await search.depart1.click();
+        await search.getDepartDate('30 October, 2026');
+
+        await search.from2.fill(locations.HK);
+        await search.getLocation(locations.HK);
+        await search.depart2.click();
+        await search.getDepartDate('20 November, 2026')
+
+        await search.cabin2.click();
+        await search.premEcon.click();
+
+        await search.from3.fill(locations.CB);
+        await search.getLocation(locations.CB);
+        await search.to3.fill(locations.MC);
+        await search.getLocation(locations.MC);
+        await search.depart3.click();
+        await search.getDepartDate('9 December, 2026');
+        await search.cabin3.click();
+        await search.busClass.click();
+
+        await search.clearAll.click();
+
+        await expect(search.to1).toBeEmpty();
+        await expect(search.to3).toBeEmpty();
+
     });
 
 
