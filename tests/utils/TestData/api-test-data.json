@@ -1,0 +1,31 @@
+{
+    "getBookingDataID": 1,
+    
+    "createBookingData":{
+        "firstname" : "John",
+        "lastname" : "Doe",
+        "totalprice" : 111,
+        "depositpaid" : true,
+        "bookingdates" : {
+            "checkin" : "2018-01-01",
+            "checkout" : "2019-01-01"
+    },
+    "additionalneeds" : "Breakfast"
+    },
+
+    "updateBookingData":{
+    "firstname" : "Amy",
+    "lastname" : "Austria",
+    "totalprice" : 214,
+    "depositpaid" : true,
+    "bookingdates" : {
+        "checkin" : "2020-01-01",
+        "checkout" : "2020-02-01"
+    },
+    "additionalneeds" : "Dinner"
+    },
+
+    "deleteBookingDataID": 1
+
+
+}
