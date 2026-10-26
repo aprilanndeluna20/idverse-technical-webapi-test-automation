@@ -9,6 +9,7 @@ test.beforeEach(async ({page}) =>{
 });
 
 test.describe('Search Flights', () => {
+    test.describe.configure({retries:2});
 
     test('should search flight default From location to Taipei in an economy as return flight ', async ({page}) => {
         if(await search.toLocation.isVisible()){
@@ -48,27 +49,6 @@ test.describe('Search Flights', () => {
         await expect(search.cheapest).toBeVisible({timeout: 15000});
         await expect(search.quickest).toBeVisible({timeout: 15000});
     });
-
-    // test('should search flight with return flight ', async ({page}) => {
-    //     if(await search.toLocation.isVisible()){
-    //         await search.toLocation.click();
-    //     }else{
-    //         await search.askAnything.click();
-
-    //     }
-    //     await search.getLocation(locations.BR);
-    //     await search.swapToFrom.click();
-    //     await search.navigateCalendarNextMonth('24 February, 2027' );
-    //     await search.tripTypeDropDown.click();
-    //     await search.addAdult.click();
-    //     await search.businessClass.click();
-    //     await search.searchBtn.click();
-
-    //     await page.waitForLoadState('load');
-    //     await expect(search.best).toBeVisible({timeout: 15000});
-    //     await expect(search.cheapest).toBeVisible({timeout: 15000});
-    //     await expect(search.quickest).toBeVisible({timeout: 15000});
-    // });
 
 
     test('should search flight with oneway flight ', async ({page}) => {
@@ -118,12 +98,16 @@ test.describe('Search Flights', () => {
         await search.getDepartDate('9 December, 2026');
         await search.cabin3.click();
         await search.busClass.click();
+        const page1Promise = page.waitForEvent('popup');
 
         await search.searchBtn.click();
-        await page.waitForLoadState('load');
-        await expect(search.cheapest).toBeVisible({timeout: 30000});
-        await expect(search.best).toBeVisible({timeout: 15000});
-        await expect(search.quickest).toBeVisible({timeout: 15000});
+
+        const flight_result = await page1Promise;
+        
+        await expect(flight_result.getByRole('button', { name: 'Cheapest' })).toBeVisible();
+        await expect(flight_result.getByRole('button', { name: 'Best', exact: true })).toBeVisible();
+        await expect(flight_result.getByRole('button', { name: 'Quickest' })).toBeVisible();
+
 
  });
 

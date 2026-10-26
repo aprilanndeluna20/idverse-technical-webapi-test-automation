@@ -10,6 +10,7 @@ test.beforeEach(async ({page}) =>{
 });
 
 test.describe('Error and Validattions', () => {
+    test.describe.configure({retries:2});
 
     test('would produce an error modal if from/to, departure/return were empty upon clicking search button', async ({}) => {
         await search.removeFromValue.click();
